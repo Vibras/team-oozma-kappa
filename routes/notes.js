@@ -1,46 +1,23 @@
-const express = require('express')
-const router = express.Router()
-const Note = require('../models/note')
+const express = require('express');
+const router = express.Router();
+const Note = require('../models/note');
 
-// Get All
-router.get('/', async (req, res) => {
-    try {
-        const notes = await Note.find()
-        res.json(notes)
-    } catch (err) {
-        res.status(500).json({ message: err.message })
-    }
-})
+router.get('/new', (req, res) => {
+  res.render('new');
+});
 
-// Get One
-router.get('/:id', (req, res) => {
-    const note = new Note({
-        text: req.body.text
-    })
-    try{
-        const newNote = await note.save()
-        res.status(201).json(newNote)
-    } catch (err) {
-        res.status(400).json({ message: err.message })
-    }
-})
+router.post('/', async (req, res) => {
+  let note = await new Note({
+    title: req.body.title,
+    description: req.body.description,
+  });
+  try {
+    note = await note.save();
+    res.redirect('/');
+  } catch (e) {
+    console.log(e);
+    res.render('new');
+  }
+});
 
-// Create One
-router.post('/', (req, res) => {
-
-})
-
-// Update One
-router.patch('/:id', (req, res) => {
-
-})
-
-// Delete One
-router.delete('/:id', (req, res) => {
-
-})
-
-module.exports = router
-
-
-slxt25v2
+module.exports = router;
