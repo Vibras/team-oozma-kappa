@@ -4,13 +4,25 @@ const Note = require('../models/note')
 
 // Get All
 router.get('/', async (req, res) => {
-    res.send('Hello World')
+    try {
+        const notes = await Note.find()
+        res.json(notes)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
 })
 
 // Get One
 router.get('/:id', (req, res) => {
-    // req.params.id
-    res.send(req.params.id)
+    const note = new Note({
+        text: req.body.text
+    })
+    try{
+        const newNote = await note.save()
+        res.status(201).json(newNote)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
 })
 
 // Create One
@@ -29,3 +41,6 @@ router.delete('/:id', (req, res) => {
 })
 
 module.exports = router
+
+
+slxt25v2
