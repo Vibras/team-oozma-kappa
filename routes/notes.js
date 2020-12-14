@@ -20,4 +20,20 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.route('/update/:id').put((req, res)=> {
+    const {id}=req.params;
+    const {updateField1, updateField2, updateField3}=req.body;
+  Note.findOneAndUpdate({_id:id}, {$set:{updateField1, updateField2, updateField3}})
+    .then(()=>res.send('Note has been updated!'))
+    .catch(err=>res.send(err))
+}); 
+
+router.route('/delete/:id').delete((req, res)=> {
+    const {id}=req.params;
+  Note.findOneAndDelete({_id:id})
+    .then(()=>res.send('Deleted!'))
+    .catch(err=>res.send(err))
+});
+
+
 module.exports = router;
