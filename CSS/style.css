@@ -4,4 +4,9 @@ div {
 
 }
 
-@import "~bootstrap/scss/bootstrap";
+
+.btn-success {
+    color: #fff;
+    background-color: blue;
+    border-color: #28a745;
+}

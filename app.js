@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
   res.render('index', { notes: notes });
 });
 
-mongoose.connect('mongodb://localhost/notes', {
+mongoose.connect('mongodb+srv://dbUser:oozma5@oozma.pljqh.mongodb.net/oozma?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
