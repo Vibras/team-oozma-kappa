@@ -9,8 +9,7 @@
         <!-- integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/style.css">
-    
-    <title>Notes Tonight</title>
+    <title>Notey</title>
 </head>
 
 <body style="background-color: lightgrey">
@@ -25,9 +24,24 @@
         <div class="card mt-2">
             <div class="card-body" style="background-color: lightgrey; border-color: lightgrey">
                 <h5 class="card-title"><%= note.title %></h5>
+                <h5 class="card-title"><%= note.description %></h5>
                 <p class="text-muted">Posted On: <%= note.createdAt.toLocaleDateString() %></p>
             </div>
         </div>
+        <form action="/notes/<%= note.id %>" method="POST">
+            <input type="hidden" name="_method" value="UPDATE"> 
+            <input type="hidden" name="_token" value="the_token">
+            <button type="submit" onclick="if (!confirm('Would you like to edit your note?')) { return false }"><span>Edit</span></button>
+        </form>
+
+        <form method="POST" action="/notes/<%= note.id %>?_method=DELETE">
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+        </form>
+
+        <form method="POST" action="/note/<%= note._id %>?_method=PUT" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">Delete</button>
+        </form>
         <%}) %>
     </div>
 </body>

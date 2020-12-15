@@ -20,20 +20,20 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.route('/update/:id').put((req, res)=> {
+router.get('/notes/:id').post((req, res)=> {
     const {id}=req.params;
-    const {updateField1, updateField2, updateField3}=req.body;
-  Note.findOneAndUpdate({_id:id}, {$set:{updateField1, updateField2, updateField3}})
-    .then(()=>res.send('Note has been updated!'))
-    .catch(err=>res.send(err))
+    const {title, description, createdAt}=req.body;
+  Note.findOneAndUpdate({_id:id}, {$set:{title, description, createdAt}})
+     .then(()=>res.send('Note has been updated!'))
+    .catch(err=>res.send("Can't delete"))
 }); 
-
-router.route('/delete/:id').delete((req, res)=> {
-    const {id}=req.params;
-  Note.findOneAndDelete({_id:id})
-    .then(()=>res.send('Deleted!'))
-    .catch(err=>res.send(err))
-});
+router.delete('/notes/:id', (req, res)=> {
+  const {id}=req.params;
+  const {title, description, createdAt}=req.body;
+Note.deleteOne({_id:id})
+   .then(()=>res.redirect("/"))
+  .catch(err=>res.send(err))
+}); 
 
 
 module.exports = router;
