@@ -13,7 +13,7 @@ export class NoteComponent implements OnInit {
   Note: Note[] = [];
 
   getNote() {
-    this.taskService.getNote().subscribe(tasks => (this.note = Note));
+    this.taskService.getNote().subscribe(notes => (this.Note = notes));
   }
 
   addNote() {
@@ -24,7 +24,7 @@ export class NoteComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    This.getNote();
+    this.getNote();
   }
 
 }

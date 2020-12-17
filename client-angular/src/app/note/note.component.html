@@ -1,1 +1,11 @@
 <p>note works!</p>
+<h3>List of Notes (Angular)</h3>
+<input [(ngModel)]="newNote.name" /><button (click)="addNote()" class="btn btn-primary">add</button>
+<ul>
+  <li *ngFor="let note of notes">
+     {{ note.title }} :
+     {{ note.description}} :
+    {{ note.complete ? "complete" : "not complete" }}
+    <button type="button" class="btn btn-success">Complete</button><button type="button" class="btn btn-danger">Delete</button>
+  </li>
+</ul>
