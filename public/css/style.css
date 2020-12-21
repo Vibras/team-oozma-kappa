@@ -1,0 +1,28 @@
+body {
+    font-family: "Anton", "Times New Roman", Times, serif;
+    margin: auto;
+}
+
+div {
+    width: 550px;
+}
+.card-body, .display-4 {
+    text-align: center;
+
+}
+
+.btn {
+    font-family: "Anton", "Times New Roman", Times, serif;
+    color: white;
+    background-color: #555555;
+    float: right;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    grid-column-gap: 10px
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+}
+

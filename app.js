@@ -31,6 +31,8 @@ app.listen(process.env.PORT || 8080, () => {
   console.log(`Server Has Started`);
 });
 
+app.use(express.static('public'));
+
 app.put('/notes/:title', function(req, res) {
   var {id}=req.params;
   var {title, description, createdAt}=req.body;
@@ -43,3 +45,12 @@ app.put('/notes/:title', function(req, res) {
       });
 });
 
+// app.post('/note/:id', (req,res)=>{
+//   console.log(req.params.id);
+//   console.log("Update button has been clicked")
+// });
+
+// app.post('/note/:id', (req,res)=>{
+//   console.log(req.params.id);
+//   console.log("Delete button has been clicked")
+// });

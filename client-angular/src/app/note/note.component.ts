@@ -1,3 +1,4 @@
+  
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from "../task.service";
 import { Note } from "../models/Note";
@@ -13,7 +14,11 @@ export class NoteComponent implements OnInit {
   Note: Note[] = [];
 
   getNote() {
+<<<<<<< Updated upstream
     this.taskService.getNote().subscribe(notes => (this.Note = notes));
+=======
+    this.taskService.getNote().subscribe(tasks => (this.note = Note));
+>>>>>>> Stashed changes
   }
 
   addNote() {

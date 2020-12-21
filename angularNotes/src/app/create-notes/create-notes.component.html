@@ -1,0 +1,11 @@
+<form>
+    <div class="form-group">
+        <label for="notesTitle">Title</label>
+        <input class="form-control" type="text" name="notesTitle" id="notesTitle" [(ngModel)]="noteTitle">
+    </div>
+    <div class="form-group">
+        <label for="notesTitle">Content</label>
+        <textarea class="form-control" rows="4" name="notesDescription" id="notesDescription" [(ngModel)]="noteDescription"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addNote()">Create</button>
+</form>
